@@ -29,39 +29,40 @@ locals {
     "serviceAccount:${module.base.members[0]}",
   ]
 
-  basic_bindings = "${map(
-    local.basic_roles[0], local.member_group_0,
-    local.basic_roles[1], local.member_group_1,
-  )}"
+  basic_bindings = {
+    local.basic_roles[0] = local.member_group_0
+    local.basic_roles[1] = local.member_group_1
+  }
 
-  org_bindings = "${map(
-    local.org_roles[0], local.member_group_0,
-    local.org_roles[1], local.member_group_1,
-  )}"
+  org_bindings = {
+    local.org_roles[0] = local.member_group_0
+    local.org_roles[1] = local.member_group_1
+  }
 
-  project_bindings = "${map(
-    local.project_roles[0], local.member_group_0,
-    local.project_roles[1], local.member_group_1,
-  )}"
+  project_bindings = {
+    local.project_roles[0] = local.member_group_0
+    local.project_roles[1] = local.member_group_1
+  }
 
-  bucket_bindings = "${map(
-    local.bucket_roles[0], local.member_group_0,
-    local.bucket_roles[1], local.member_group_1,
-  )}"
+  bucket_bindings = {
+    local.bucket_roles[0] = local.member_group_0
+    local.bucket_roles[1] = local.member_group_1
+  }
 }
 
 provider "google" {
-  credentials = "${file(var.credentials_file_path)}"
-  version     = "~> 1.20"
+  credentials = file(var.credentials_file_path)
+  version     = "~> 2.7"
 }
 
 provider "google-beta" {
-  credentials = "${file(var.credentials_file_path)}"
-  version     = "~> 1.20"
+  credentials = file(var.credentials_file_path)
+  version     = "~> 2.7"
 }
 
 module "base" {
   source          = "./base"
-  org_id          = "${var.org_id}"
-  billing_account = "${var.billing_account}"
+  org_id          = var.org_id
+  billing_account = var.billing_account
 }
+

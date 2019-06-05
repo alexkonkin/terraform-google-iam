@@ -40,3 +40,4 @@ variable "folder_one" {
 variable "folder_two" {
   description = "The second folder to apply IAM bindings"
 }
+
