@@ -21,32 +21,32 @@ locals {
   bucket_roles  = ["roles/storage.legacyObjectReader", "roles/storage.legacyBucketReader"]
 
   member_group_0 = [
-    "serviceAccount:${module.base.members[0]}",
-    "serviceAccount:${module.base.members[1]}",
+    "serviceAccount:$${module.base.members[0]}",
+    "serviceAccount:$${module.base.members[1]}",
   ]
 
   member_group_1 = [
-    "serviceAccount:${module.base.members[0]}",
+    "serviceAccount:$${module.base.members[0]}",
   ]
 
   basic_bindings = {
-    local.basic_roles[0] = local.member_group_0
-    local.basic_roles[1] = local.member_group_1
+    "$${local.basic_roles[0]}" = local.member_group_0
+    "$${local.basic_roles[1]}" = local.member_group_1
   }
 
   org_bindings = {
-    local.org_roles[0] = local.member_group_0
-    local.org_roles[1] = local.member_group_1
+    "$${local.org_roles[0]}" = local.member_group_0
+    "$${local.org_roles[1]}" = local.member_group_1
   }
 
   project_bindings = {
-    local.project_roles[0] = local.member_group_0
-    local.project_roles[1] = local.member_group_1
+    "$${local.project_roles[0]}" = local.member_group_0
+    "$${local.project_roles[1]}" = local.member_group_1
   }
 
   bucket_bindings = {
-    local.bucket_roles[0] = local.member_group_0
-    local.bucket_roles[1] = local.member_group_1
+    "$${local.bucket_roles[0]}" = local.member_group_0
+    "$${local.bucket_roles[1]}" = local.member_group_1
   }
 }
 

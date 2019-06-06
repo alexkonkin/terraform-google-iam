@@ -58,7 +58,7 @@ variable "pubsub_subscriptions" {
 variable "storage_buckets" {
   description = "Buckets list to add the IAM policies/bindings"
   default     = []
-  type        = list(string)
+  type        = list
 }
 
 variable "subnets" {
@@ -70,13 +70,13 @@ variable "subnets" {
 variable "kms_key_rings" {
   description = "Kms Key Rings list to add the IAM policies/bindings"
   default     = []
-  type        = list(string)
+  type        = list
 }
 
 variable "kms_crypto_keys" {
   description = "Kms Crypto Key list to add the IAM policies/bindings"
   default     = []
-  type        = list(string)
+  type        = list
 }
 
 variable "mode" {
@@ -86,6 +86,6 @@ variable "mode" {
 
 variable "bindings" {
   description = "Map of role (key) and list of members (value) to add the IAM policies/bindings"
-  type        = map(string)
+  type        = map
 }
 
